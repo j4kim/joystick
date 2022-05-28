@@ -33,55 +33,49 @@ var state = {
 
 const logMode = process.argv[2] === 'log'
 
-const joystickBindings = {
-    "0,127": "left",
-    "127,0": "up",
-    "255,127": "right",
-    "127,255": "down"  
-}
-
-const buttonBindings = {
-    "47": "a",
-    "79": "b"
-}
-
-const moneyBindings = {
-    "32": "c",
-    "64": "m",
-    "128": "enter"
-}
-
 function keyTap(key) {
     if (key) robot.keyTap(key)
 }
 
-const actionBindings = [
+const partsConfig = [
     {
         type: "joystick",
         slice: [0, 2],
-        action: data => keyTap(joystickBindings[data])
+        bindings: {
+            "0,127": "left",
+            "127,0": "up",
+            "255,127": "right",
+            "127,255": "down"  
+        }
     },
     {
         type: "button",
         slice: [5, 6],
-        action: data => keyTap(buttonBindings[data])
+        bindings: {
+            "47": "a",
+            "79": "b"
+        }
     },
     {
         type: "money",
         slice: [6, 7],
-        action: data => keyTap(moneyBindings[data])
+        bindings: {
+            "32": "c",
+            "64": "m",
+            "128": "enter"
+        }
     }
 ]
 
 device.on("data", function(data) {
-    actionBindings.forEach(binding => {
-        let newData = data.slice(...binding.slice).join()
-        if (newData !== state[binding.type]) {
-            state[binding.type] = newData
+    partsConfig.forEach(part => {
+        let newData = data.slice(...part.slice).join()
+        if (newData !== state[part.type]) {
+            state[part.type] = newData
             if (logMode) {
-                console.log({ type: binding.type, newData })
+                console.log({ type: part.type, newData })
             } else {
-                binding.action(newData)
+                keyTap(part.bindings[newData])
             }
         }
     })
