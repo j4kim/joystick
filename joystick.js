@@ -60,8 +60,8 @@ const partsConfig = [
         type: "money",
         slice: [6, 7],
         bindings: {
-            "32": "c",
-            "64": "m",
+            "0": "c", // cup
+            "96": "m", // money
             "128": "enter"
         }
     }
