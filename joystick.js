@@ -25,11 +25,7 @@ try {
     process.exit()
 }
 
-var state = {
-    joystick: undefined,
-    button: undefined,
-    money: undefined
-}
+var state = ""
 
 const logMode = process.argv[2] === 'log'
 
@@ -37,46 +33,29 @@ function keyTap(key) {
     if (key) robot.keyTap(key)
 }
 
-const partsConfig = [
-    {
-        type: "joystick",
-        slice: [0, 2],
-        bindings: {
-            "0,127": "left",
-            "127,0": "up",
-            "255,127": "right",
-            "127,255": "down"  
-        }
-    },
-    {
-        type: "button",
-        slice: [5, 6],
-        bindings: {
-            "47": "a",
-            "79": "b"
-        }
-    },
-    {
-        type: "money",
-        slice: [6, 7],
-        bindings: {
-            "0": "c", // cup
-            "96": "m", // money
-            "128": "enter"
-        }
-    }
-]
+const bindings = {
+    "127,127,127,127,47,0,192": "a",
+    "127,127,127,127,79,0,192": "b",
+    "127,0,127,127,15,0,192": "up",
+    "127,255,127,127,15,0,192": "down",
+    "0,127,127,127,15,0,192": "left",
+    "255,127,127,127,15,0,192": "right",
+    "127,127,127,127,15,1,192": "tab",
+    "127,127,127,127,15,2,192": "x",
+    "127,127,127,127,15,4,192": "y",
+    "127,127,127,127,143,0,192": "enter",
+}
+
 
 device.on("data", function(data) {
-    partsConfig.forEach(part => {
-        let newData = data.slice(...part.slice).join()
-        if (newData !== state[part.type]) {
-            state[part.type] = newData
-            if (logMode) {
-                console.log({ type: part.type, newData })
-            } else {
-                keyTap(part.bindings[newData])
-            }
+    let arr = Array.from(data)
+    newData = [...arr.slice(0,2), ...arr.slice(3,8)].join()
+    if (newData !== state) {
+        state = newData
+        if (logMode) {
+            console.log(newData)
+        } else {
+            keyTap(bindings[newData])
         }
-    })
+    }
 })
