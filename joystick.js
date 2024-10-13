@@ -1,22 +1,15 @@
 const HID = require('node-hid')
 const robot = require('robotjs')
 
-console.log(HID.devices())
+const devices = HID.devices()
 
-/*
-{
-    vendorId: 121, // 0x79
-    productId: 6,
-    path: 'IOService:/AppleARMPE/arm-io@10F00000/AppleT810xIO/usb-drd1@2280000/AppleT8103USBXHCI@01000000/usb-drd1-port-hs@01100000/Generic   USB  Joystick  @01100000/IOUSBHostInterface@0/AppleUserUSBHostHIDDevice',
-    serialNumber: '',
-    manufacturer: 'DragonRise Inc.  ',
-    product: 'Generic   USB  Joystick  ',
-    release: 263,
-    interface: 0,
-    usagePage: 1,
-    usage: 4
+const mode = process.argv[2]
+
+if (mode === 'list') {
+    console.log(devices.length, "devices found")
+    console.log(devices)
+    process.exit()
 }
-*/
 
 try {
     var device = new HID.HID(121, 6)
@@ -27,7 +20,7 @@ try {
 
 var state = ""
 
-const logMode = process.argv[2] === 'log'
+const logMode = mode === 'log'
 
 function keyTap(key) {
     if (key) robot.keyTap(key)
