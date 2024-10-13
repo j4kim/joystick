@@ -3,7 +3,7 @@ const int pinDT = 22;
 const int pinSW = 23;
 const int pinBtn = 2;
 
-String state = "1111";
+byte state = 0b1111;  // Valeur initiale, tout à HIGH
 
 void setup() {
   pinMode(pinCLK, INPUT);
@@ -15,16 +15,15 @@ void setup() {
 }
 
 void loop() {
-  String clk = String(digitalRead(pinCLK));
-  String dt = String(digitalRead(pinDT));
-  String sw = String(digitalRead(pinSW));
-  String btn = String(digitalRead(pinBtn));
+  // Lire les états actuels des broches et les combiner en un octet
+  byte newState = (digitalRead(pinCLK) << 3) | (digitalRead(pinDT) << 2) | (digitalRead(pinSW) << 1) | digitalRead(pinBtn);
 
-  String newState = clk + dt + sw + btn;
+  // Si l'état a changé, afficher le nouvel état
   if (newState != state) {
-    state = newState;
-    Serial.println(state);
+    state = newState;  // Mettre à jour l'état précédent
+    Serial.println(state);  // Afficher l'état en int
   }
 
+  // Délai pour éviter des rafraîchissements trop rapides
   delay(1);
 }
