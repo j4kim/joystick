@@ -54,7 +54,7 @@ device.on("data", function(data) {
     if (newData !== state) {
         state = newData
         if (logMode) {
-            console.log(newData)
+            console.log(newData, bindings[newData])
         } else {
             keyTap(bindings[newData])
         }
