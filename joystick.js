@@ -52,8 +52,11 @@ const defaultState = "127,127,127,127,15,0,192"
 device.on("data", function(data) {
     let arr = Array.from(data)
     newData = [...arr.slice(0,2), ...arr.slice(3,8)].join()
-    if (newData !== defaultState && newData !== state) {
+    if (newData !== state) {
         state = newData
+        if (newData === defaultState) {
+            return;
+        }
         if (logMode) {
             console.log(newData, bindings[newData])
         } else {
