@@ -2,7 +2,7 @@ const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline')
 
 // npx @serialport/list pour lister les ports série 
-const path = '/dev/tty.usbmodemHIDPC1';
+const path = '/dev/tty.usbmodem11301';
 
 // Configurer le port série avec le taux de transmission (baudRate) correct
 const port = new SerialPort({ path, baudRate: 9600 });
