@@ -1,4 +1,19 @@
-# Joystick
+# Arcade
+
+## Architecture cible
+
+Modes:
+- `menu`: permet de choisir l'application à lancer parmi Dom At Home et les jeux RetroArch
+- `retroarch`: lance un jeu sur RetroArch
+- `domathome`: lance joystick.js pour émuler des entrées clavier pour Dom At Home, puis lance Dom At Home en mode Kiosk sur Chrome. Lorsqu'on quitte ce mode, il faut libérer le périphérique USB utilisé par joystick.js pour pouvoir l'utiliser sur RetroArch.
+
+- Serial listener écoute les événements de l'encodeur rotatif connecté au Arduino:
+    - `up`/`down` en mode menu: sélectionne le jeu à lancer
+    - `up`/`down` en jeu: modifie le volume du Mac
+    - `enter` en mode menu: lance le jeu sélectionné
+    - `enter` en jeu: quitte le jeu et passe en mode menu
+
+## Joystick
 
 ## Interpréter les données du joytick, des boutons et du monnayeur
 
@@ -9,23 +24,10 @@ node joystick.js
 
 Il transforme les entrées du joystick en événements clavier: gauche, haut, droite, bas, A, B, tab, X, Y, enter, M.
 
-## Mode log
+### Mode log
 
 Pour afficher les changements d'état du joystick.
 
 ```
 node joystick.js log
 ```
-
-## Application Automator
-
-Le fichier `run dom at home.app` est une application construite avec Automator.
-
-Elle est constituée de 3 étapes: 
-1. Lancer joystick.js
-2. Lancer dom at home sur un serveur local
-3. Lancer Chrome en mode kiosk sur le serveur local
-
-L'application est lancée à l'ouverture. Ceci est configuré depuis les préférences de l'utilisateur.
-
-On peut terminer le process node qui écoute le joystick via le moniteur d'activité.
