@@ -1,5 +1,6 @@
 const { SerialPort } = require('serialport');
-const { ReadlineParser } = require('@serialport/parser-readline')
+const { ReadlineParser } = require('@serialport/parser-readline');
+const { increaseVolume, decreaseVolume } = require('./volume');
 
 // npx @serialport/list pour lister les ports série 
 const path = '/dev/tty.usbmodem11301';
@@ -8,7 +9,7 @@ const path = '/dev/tty.usbmodem11301';
 const port = new SerialPort({ path, baudRate: 9600 });
 
 // Utiliser un parser readline pour lire les données ligne par ligne
-const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }))
+const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
 
 // Ouverture du port
@@ -19,6 +20,11 @@ port.on('open', () => {
 // Lecture des données du port série
 parser.on('data', data => {
   console.log(`Données reçues : ${data}`);
+  if (data === 'up') {
+    increaseVolume();
+  } else if (data === 'down') {
+    decreaseVolume();
+  }
 });
 
 // Gestion des erreurs
