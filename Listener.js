@@ -11,11 +11,16 @@ class Listener {
     onData(key) {
         if (typeof this.handler[key] === "function") {
             const nextHandlerName = this.handler[key]();
-            if (nextHandlerName) {
-                this.handler = new Listener.HANDLERS[nextHandlerName]();
+            if (typeof nextHandlerName === "string") {
+                const nextHandler = Listener.HANDLERS[nextHandlerName]
+                if (nextHandler) {
+                    this.handler = new nextHandler();
+                } else {
+                    console.error(`Handler ${nextHandlerName} not registered`)
+                }
             }
         } else {
-            console.log(`No method ${key} in ${this.handler.constructor.name}`);
+            console.error(`No method ${key} in ${this.handler.constructor.name}`);
         }
     }
 }
