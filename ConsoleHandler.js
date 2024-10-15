@@ -5,7 +5,7 @@ class ConsoleHandler {
     down() {
         console.log("down")
     }
-    enter() {
+    switch() {
         return "DefaultHandler";
     }
 }

@@ -7,7 +7,7 @@ class DefaultHandler {
     down() {
         decreaseVolume();
     }
-    enter() {
+    switch() {
         return "ConsoleHandler";
     }
 }
