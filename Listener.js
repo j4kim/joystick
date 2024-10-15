@@ -1,12 +1,12 @@
 class Listener {
 
     static HANDLERS = {
-        DefaultHandler: require("./DefaultHandler"),
+        VolumeHandler: require("./VolumeHandler"),
         ConsoleHandler: require("./ConsoleHandler"),
     }
 
     constructor() {
-        this.handler = new Listener.HANDLERS.DefaultHandler()
+        this.handler = new Listener.HANDLERS.VolumeHandler()
     }
 
     onData(key) {
