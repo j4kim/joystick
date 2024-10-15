@@ -7,6 +7,9 @@ class DefaultHandler {
     down() {
         decreaseVolume();
     }
+    enter() {
+        return "ConsoleHandler";
+    }
 }
 
 module.exports = DefaultHandler
