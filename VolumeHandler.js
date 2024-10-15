@@ -1,7 +1,7 @@
 const Handler = require("./Handler");
 const { increaseVolume, decreaseVolume } = require("./volume");
 
-class VolumeHandler extends Handler{
+class VolumeHandler extends Handler {
     up() {
         increaseVolume();
     }
@@ -13,4 +13,4 @@ class VolumeHandler extends Handler{
     }
 }
 
-module.exports = VolumeHandler
+module.exports = VolumeHandler;

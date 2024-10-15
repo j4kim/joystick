@@ -1,15 +1,15 @@
 const Handler = require("./Handler");
 
-class ConsoleHandler extends Handler{
+class ConsoleHandler extends Handler {
     up() {
-        console.log("up")
+        console.log("up");
     }
     down() {
-        console.log("down")
+        console.log("down");
     }
     switch() {
         return "DefaultHandler";
     }
 }
 
-module.exports = ConsoleHandler
+module.exports = ConsoleHandler;
