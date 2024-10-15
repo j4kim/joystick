@@ -4,6 +4,7 @@ class Listener {
         DomAtHomeHandler: require("./Handlers/DomAtHomeHandler"),
         VolumeHandler: require("./Handlers/VolumeHandler"),
         NumHandler: require("./Handlers/NumHandler"),
+        RaymanHandler: require("./Handlers/RaymanHandler"),
     };
 
     constructor() {

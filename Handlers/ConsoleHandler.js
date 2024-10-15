@@ -6,6 +6,7 @@ class ConsoleHandler extends Handler {
         { handler: "DomAtHomeHandler", title: "Dom At Home" },
         { handler: "VolumeHandler", title: "Volume" },
         { handler: "NumHandler", title: "Numbers" },
+        { handler: "RaymanHandler", title: "Rayman" },
     ];
 
     constructor() {
