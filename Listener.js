@@ -13,7 +13,6 @@ class Listener {
         if (typeof this.handler[key] === 'function') {
             const nextHandlerName = this.handler[key]();
             if (nextHandlerName) {
-                console.log("Switching to", nextHandlerName)
                 this.handler = new Listener.HANDLERS[nextHandlerName]();
             }
         } else {

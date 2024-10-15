@@ -1,6 +1,7 @@
+const Handler = require("./Handler");
 const { increaseVolume, decreaseVolume } = require("./volume");
 
-class DefaultHandler {
+class DefaultHandler extends Handler{
     up() {
         increaseVolume();
     }

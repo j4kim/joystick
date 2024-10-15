@@ -1,4 +1,6 @@
-class ConsoleHandler {
+const Handler = require("./Handler");
+
+class ConsoleHandler extends Handler{
     up() {
         console.log("up")
     }
