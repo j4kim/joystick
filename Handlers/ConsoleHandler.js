@@ -8,7 +8,7 @@ class ConsoleHandler extends Handler {
         console.log("down");
     }
     switch() {
-        return "DomAtHomeHandler";
+        return "NumHandler";
     }
 }
 

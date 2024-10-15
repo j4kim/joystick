@@ -16,6 +16,9 @@ class VolumeHandler extends Handler {
     down() {
         this.setLevel(this.level - this.step);
     }
+    switch() {
+        return "ConsoleHandler";
+    }
 
     getLevel() {
         const stdout = execSync(
