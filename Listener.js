@@ -1,7 +1,7 @@
 class Listener {
     static HANDLERS = {
-        ConsoleHandler: require("./ConsoleHandler"),
-        DomAtHomeHandler: require("./DomAtHomeHandler"),
+        ConsoleHandler: require("./Handlers/ConsoleHandler"),
+        DomAtHomeHandler: require("./Handlers/DomAtHomeHandler"),
     };
 
     constructor() {
