@@ -10,12 +10,14 @@ class Listener {
     }
 
     onData(key) {
-        if (this.handler && typeof this.handler[key] === 'function') {
+        if (typeof this.handler[key] === 'function') {
             const nextHandlerName = this.handler[key]();
             if (nextHandlerName) {
                 console.log("Switching to", nextHandlerName)
                 this.handler = new Listener.HANDLERS[nextHandlerName]();
             }
+        } else {
+            console.error("No method", key, "in", this.handler.constructor.name)
         }
     }
 }
