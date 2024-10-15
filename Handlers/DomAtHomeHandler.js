@@ -4,7 +4,6 @@ const { execSync } = require("child_process");
 class DomAtHomeHandler extends VolumeHandler {
     constructor() {
         super();
-        this.killall();
         this.open("http://localhost:8080");
     }
 
