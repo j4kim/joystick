@@ -1,6 +1,6 @@
 const { SerialPort } = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline');
-const { increaseVolume, decreaseVolume } = require('./volume');
+const Listener = require('./Listener');
 
 const path = '/dev/tty.usbmodem11301';
 
@@ -12,10 +12,6 @@ port.on('error', (err) => {
   console.error('Erreur sur le port série : ', err.message);
 });
 
-parser.on('data', data => {
-  if (data === 'up') {
-    increaseVolume();
-  } else if (data === 'down') {
-    decreaseVolume();
-  }
-});
+const listener = new Listener()
+
+parser.on('data', data => listener.onData(data));
