@@ -5,15 +5,10 @@ const options = [
     { handler: "RetroArchHandler", title: "Rayman" },
 ];
 
-const arduino = {
-    path: "/dev/tty.usbmodem1401",
-    baudRate: 9600,
-};
-
 const retroarch = {
     coresPath:
         "/Users/joaquimperez/Library/Application Support/RetroArch/cores",
     romsPath: "/Volumes/J4",
 };
 
-module.exports = { options, arduino, retroarch };
+module.exports = { options, retroarch };
