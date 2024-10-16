@@ -4,7 +4,6 @@ class Listener {
         DomAtHomeHandler: require("./Handlers/DomAtHomeHandler"),
         VolumeHandler: require("./Handlers/VolumeHandler"),
         NumHandler: require("./Handlers/NumHandler"),
-        RaymanHandler: require("./Handlers/RaymanHandler"),
         RetroArchHandler: require("./Handlers/RetroArchHandler"),
     };
 
@@ -14,18 +13,24 @@ class Listener {
 
     onData(key) {
         if (typeof this.handler[key] !== "function") {
-            return console.error(`No method ${key} in ${this.handler.constructor.name}`);
+            return console.error(
+                `No method ${key} in ${this.handler.constructor.name}`
+            );
         }
         const nextOption = this.handler[key]();
         if (nextOption === undefined) {
             return;
         }
         if (!nextOption.handler) {
-            return console.error(`No handler returned by ${this.handler.constructor.name}`);
+            return console.error(
+                `No handler returned by ${this.handler.constructor.name}`
+            );
         }
-        const nextHandler = Listener.HANDLERS[nextOption.handler]
+        const nextHandler = Listener.HANDLERS[nextOption.handler];
         if (!nextHandler) {
-            return console.error(`Handler ${nextOption.handler} not registered`)
+            return console.error(
+                `Handler ${nextOption.handler} not registered`
+            );
         }
         this.handler = new nextHandler(nextOption.args);
     }

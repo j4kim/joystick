@@ -2,7 +2,14 @@ const options = [
     { handler: "DomAtHomeHandler", title: "Dom At Home" },
     { handler: "VolumeHandler", title: "Volume" },
     { handler: "NumHandler", title: "Numbers" },
-    { handler: "RetroArchHandler", title: "Rayman" },
+    {
+        handler: "RetroArchHandler",
+        title: "Rayman",
+        args: {
+            core: "mednafen_psx_libretro.dylib",
+            rom: "PS1/Rayman-PSX-PAL/Rayman-PSX-PAL.cue",
+        },
+    },
 ];
 
 const retroarch = {
