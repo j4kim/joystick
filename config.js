@@ -6,7 +6,7 @@ const options = [
 ];
 
 const arduino = {
-    path: "/dev/tty.usbmodem11301",
+    path: "/dev/tty.usbmodem1401",
     baudRate: 9600,
 };
 
