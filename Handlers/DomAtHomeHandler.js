@@ -4,18 +4,18 @@ const { execSync } = require("child_process");
 class DomAtHomeHandler extends VolumeHandler {
     constructor() {
         super();
-        this.open("http://localhost:8080");
+        this.openChrome("http://localhost:8080");
     }
 
     switch() {
-        this.killall();
+        this.killChrome();
         return "ConsoleHandler";
     }
 
-    open(url) {
+    openChrome(url) {
         execSync(`open -a "Google Chrome" --args --kiosk "${url}"`);
     }
-    killall() {
+    killChrome() {
         try {
             execSync('killall "Google Chrome"');
         } catch (e) {
