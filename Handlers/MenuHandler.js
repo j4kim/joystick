@@ -1,7 +1,7 @@
 const { options } = require("../config");
 const Handler = require("./Handler");
 
-class ConsoleHandler extends Handler {
+class MenuHandler extends Handler {
     index = 0;
     constructor() {
         super();
@@ -32,4 +32,4 @@ class ConsoleHandler extends Handler {
     }
 }
 
-module.exports = ConsoleHandler;
+module.exports = MenuHandler;

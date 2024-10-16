@@ -1,6 +1,6 @@
 class Listener {
     static HANDLERS = {
-        ConsoleHandler: require("./Handlers/ConsoleHandler"),
+        MenuHandler: require("./Handlers/MenuHandler"),
         DomAtHomeHandler: require("./Handlers/DomAtHomeHandler"),
         VolumeHandler: require("./Handlers/VolumeHandler"),
         NumHandler: require("./Handlers/NumHandler"),
@@ -8,7 +8,7 @@ class Listener {
     };
 
     constructor() {
-        this.handler = new Listener.HANDLERS.ConsoleHandler();
+        this.handler = new Listener.HANDLERS.MenuHandler();
     }
 
     onData(key) {

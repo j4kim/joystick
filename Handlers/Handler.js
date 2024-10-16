@@ -5,7 +5,7 @@ class Handler {
     }
 
     switch() {
-        return { handler: "ConsoleHandler" };
+        return { handler: "MenuHandler" };
     }
 }
 
