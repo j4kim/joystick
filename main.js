@@ -1,10 +1,9 @@
 const { SerialPort } = require("serialport");
 const { ReadlineParser } = require("@serialport/parser-readline");
 const Listener = require("./Listener");
+const { arduino } = require("./config");
 
-const path = "/dev/tty.usbmodem11301";
-
-const port = new SerialPort({ path, baudRate: 9600 });
+const port = new SerialPort(arduino);
 
 const parser = port.pipe(new ReadlineParser({ delimiter: "\r\n" }));
 
