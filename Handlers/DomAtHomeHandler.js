@@ -9,7 +9,7 @@ class DomAtHomeHandler extends VolumeHandler {
 
     switch() {
         this.killChrome();
-        return "ConsoleHandler";
+        return super.switch();
     }
 
     openChrome(url) {

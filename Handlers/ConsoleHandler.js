@@ -18,7 +18,7 @@ class ConsoleHandler extends Handler {
         this.showMenu();
     }
     switch() {
-        return options[this.index].handler;
+        return options[this.index];
     }
 
     showMenu() {

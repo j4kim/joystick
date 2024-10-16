@@ -5,6 +5,7 @@ class Listener {
         VolumeHandler: require("./Handlers/VolumeHandler"),
         NumHandler: require("./Handlers/NumHandler"),
         RaymanHandler: require("./Handlers/RaymanHandler"),
+        RetroArchHandler: require("./Handlers/RetroArchHandler"),
     };
 
     constructor() {
@@ -15,15 +16,18 @@ class Listener {
         if (typeof this.handler[key] !== "function") {
             return console.error(`No method ${key} in ${this.handler.constructor.name}`);
         }
-        const nextHandlerName = this.handler[key]();
-        if (typeof nextHandlerName !== "string") {
+        const nextOption = this.handler[key]();
+        if (nextOption === undefined) {
             return;
         }
-        const nextHandler = Listener.HANDLERS[nextHandlerName]
-        if (!nextHandler) {
-            return console.error(`Handler ${nextHandlerName} not registered`)
+        if (!nextOption.handler) {
+            return console.error(`No handler returned by ${this.handler.constructor.name}`);
         }
-        this.handler = new nextHandler();
+        const nextHandler = Listener.HANDLERS[nextOption.handler]
+        if (!nextHandler) {
+            return console.error(`Handler ${nextOption.handler} not registered`)
+        }
+        this.handler = new nextHandler(nextOption.args);
     }
 }
 

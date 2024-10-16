@@ -11,9 +11,6 @@ class NumHandler extends Handler {
         this.level--;
         console.log(this.level);
     }
-    switch() {
-        return "ConsoleHandler";
-    }
 }
 
 module.exports = NumHandler;

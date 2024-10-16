@@ -2,14 +2,16 @@ const VolumeHandler = require("./VolumeHandler");
 const { execSync } = require("child_process");
 
 class RaymanHandler extends VolumeHandler {
-    constructor() {
+    constructor({core, rom}) {
         super();
-        this.open();
+        this.core = core;
+        this.rom = rom;
+        // this.open();
     }
 
     switch() {
         this.killall();
-        return "ConsoleHandler";
+        return this.super();
     }
 
     open() {
