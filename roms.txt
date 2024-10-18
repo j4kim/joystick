@@ -1,0 +1,22 @@
+a5200_libretro.dylib
+craft_libretro.dylib
+ecwolf_libretro.dylib
+flycast_libretro.dylib
+gme_libretro.dylib
+gpsp_libretro.dylib
+jumpnbump_libretro.dylib
+mame_libretro.dylib
+mednafen_psx_hw_libretro.dylib
+mednafen_psx_libretro.dylib
+
+minivmac_libretro.dylib
+pcsx_rearmed_libretro.dylib
+prosystem_libretro.dylib
+sameduck_libretro.dylib
+swanstation_libretro.dylib
+tyrquake_libretro.dylib
+vba_next_libretro.dylib
+vbam_libretro.dylib
+yabause_libretro.dylib
+
+# Ne fonctionnent pas
