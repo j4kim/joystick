@@ -1,13 +1,13 @@
-const { options } = require("../config");
+const config = require("../config");
 const Handler = require("./Handler");
 
 class MenuHandler extends Handler {
     index = 0;
     eventToSwitch = "press";
 
-    constructor(args) {
+    constructor(options) {
         super();
-        this.options = args?.options ?? options;
+        this.options = options ?? config.options;
         this.showMenu();
     }
 
