@@ -11,13 +11,8 @@ class Listener {
         this.handler = new Listener.HANDLERS.MenuHandler();
     }
 
-    onData(key) {
-        if (typeof this.handler[key] !== "function") {
-            return console.error(
-                `No method ${key} in ${this.handler.constructor.name}`
-            );
-        }
-        const nextOption = this.handler[key]();
+    onData(event) {
+        const nextOption = this.handler.handle(event);
         if (nextOption === undefined) {
             return;
         }
