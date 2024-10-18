@@ -1,5 +1,6 @@
 const options = [
     { handler: "DomAtHomeHandler", title: "Dom At Home" },
+    { handler: "ConsoleHandler", title: "Console" },
     { handler: "VolumeHandler", title: "Volume" },
     { handler: "NumHandler", title: "Numbers" },
     {
