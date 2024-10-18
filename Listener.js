@@ -1,6 +1,7 @@
 class Listener {
     static HANDLERS = {
         MenuHandler: require("./Handlers/MenuHandler"),
+        SubMenuHandler: require("./Handlers/SubMenuHandler"),
         ConsoleHandler: require("./Handlers/ConsoleHandler"),
         DomAtHomeHandler: require("./Handlers/DomAtHomeHandler"),
         VolumeHandler: require("./Handlers/VolumeHandler"),
