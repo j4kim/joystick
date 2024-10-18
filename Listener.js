@@ -4,7 +4,6 @@ class Listener {
         ConsoleHandler: require("./Handlers/ConsoleHandler"),
         DomAtHomeHandler: require("./Handlers/DomAtHomeHandler"),
         VolumeHandler: require("./Handlers/VolumeHandler"),
-        NumHandler: require("./Handlers/NumHandler"),
         RetroArchHandler: require("./Handlers/RetroArchHandler"),
     };
 
