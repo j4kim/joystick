@@ -13,20 +13,14 @@ class Listener {
 
     onData(event) {
         const nextOption = this.handler.handle(event);
-        if (nextOption === undefined) {
-            return;
-        }
-        if (!nextOption.handler) {
-            return console.error(
-                `No handler returned by ${this.handler.constructor.name}`
-            );
-        }
-        const nextHandler = Listener.HANDLERS[nextOption.handler];
+
+        if (nextOption === undefined) return;
+
+        const nextHandler = Listener.HANDLERS[nextOption?.handler];
         if (!nextHandler) {
-            return console.error(
-                `Handler ${nextOption.handler} not registered`
-            );
+            return console.error(`Handler not registered`, nextOption);
         }
+
         this.handler = new nextHandler(nextOption.args);
     }
 }
