@@ -1,13 +1,16 @@
+const Joystick = require("../joystick");
 const VolumeHandler = require("./VolumeHandler");
 const { execSync } = require("child_process");
 
 class DomAtHomeHandler extends VolumeHandler {
     constructor() {
         super();
+        this.joystick = new Joystick();
         this.openChrome("http://localhost:8080");
     }
 
     switch() {
+        this.joystick.disconnect();
         this.killChrome();
         return super.switch();
     }
