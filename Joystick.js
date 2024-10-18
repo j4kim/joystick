@@ -56,6 +56,10 @@ class Joystick {
     keyTap(key) {
         if (key) robot.keyTap(key)
     }
+
+    disconnect() {
+        this.device.close();
+    }
 }
 
 module.exports = Joystick;
