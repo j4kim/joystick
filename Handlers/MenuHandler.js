@@ -3,6 +3,8 @@ const Handler = require("./Handler");
 
 class MenuHandler extends Handler {
     index = 0;
+    eventToSwitch = "press";
+
     constructor() {
         super();
         this.showMenu();

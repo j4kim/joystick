@@ -1,4 +1,6 @@
 class Handler {
+    eventToSwitch = "longpress"
+
     constructor() {
         console.clear();
         console.log(this.constructor.name);
@@ -12,7 +14,7 @@ class Handler {
         if (typeof this[event] === "function") {
             return this[event]();
         }
-        if (event === "longpress") {
+        if (event === this.eventToSwitch) {
             return this.switch();
         }
     }
