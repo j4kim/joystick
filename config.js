@@ -1,5 +1,12 @@
 const options = [
-    { handler: "DomAtHomeHandler", title: "Dom At Home" },
+    {
+        handler: "DomAtHomeHandler",
+        title: "Dom At Home",
+        args: {
+            path: "/Users/joaquimperez/dev/dom-at-home/dist",
+            port: 3000,
+        },
+    },
     { handler: "ConsoleHandler", title: "Console" },
     { handler: "VolumeHandler", title: "Volume" },
     {
