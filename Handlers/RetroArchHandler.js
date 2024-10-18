@@ -16,9 +16,10 @@ class RetroArchHandler extends VolumeHandler {
     }
 
     openRetroArch() {
-        execSync(
-            `open -a "RetroArch" --args -L "${retroarch.coresPath}/${this.core}" "${retroarch.romsPath}/${this.rom}" -f`
-        );
+        const rom = this.rom ? `"${retroarch.romsPath}/${this.rom}"` : "";
+        const cmd = `open -a "RetroArch" --args -L "${retroarch.coresPath}/${this.core}" ${rom} -f`;
+        console.log(cmd);
+        execSync(cmd);
     }
     killRetroArch() {
         try {

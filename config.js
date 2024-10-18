@@ -1,9 +1,11 @@
+const usrBase = "/Users/joaquimperez";
+
 const options = [
     {
         handler: "DomAtHomeHandler",
         title: "Dom At Home",
         args: {
-            path: "/Users/joaquimperez/dev/dom-at-home/dist",
+            path: usrBase + "/dev/dom-at-home/dist",
             port: 3000,
         },
     },
@@ -17,11 +19,15 @@ const options = [
             rom: "PS1/Rayman-PSX-PAL/Rayman-PSX-PAL.cue",
         },
     },
+    {
+        handler: "RetroArchHandler",
+        title: "2048",
+        args: { core: "2048_libretro.dylib" },
+    },
 ];
 
 const retroarch = {
-    coresPath:
-        "/Users/joaquimperez/Library/Application Support/RetroArch/cores",
+    coresPath: usrBase + "/Library/Application Support/RetroArch/cores",
     romsPath: "/Volumes/J4",
 };
 
