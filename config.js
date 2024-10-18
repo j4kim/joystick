@@ -9,8 +9,6 @@ const options = [
             port: 3000,
         },
     },
-    { handler: "ConsoleHandler", title: "Console" },
-    { handler: "VolumeHandler", title: "Volume" },
     {
         handler: "SubMenuHandler",
         title: "PS1",
@@ -87,6 +85,16 @@ const options = [
                         rom: "Doom/doom1.wad",
                     },
                 },
+            ],
+        },
+    },
+    {
+        handler: "SubMenuHandler",
+        title: "Debug",
+        args: {
+            options: [
+                { handler: "ConsoleHandler", title: "Console" },
+                { handler: "VolumeHandler", title: "Volume" },
             ],
         },
     },
