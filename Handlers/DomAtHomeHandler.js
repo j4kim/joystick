@@ -1,6 +1,6 @@
 const Joystick = require("../joystick");
 const VolumeHandler = require("./VolumeHandler");
-const { exec, execSync } = require("child_process");
+const { exec } = require("child_process");
 
 module.exports = class DomAtHomeHandler extends VolumeHandler {
     constructor({ path, port }) {
@@ -22,14 +22,10 @@ module.exports = class DomAtHomeHandler extends VolumeHandler {
     }
 
     openChrome(url) {
-        execSync(`open -a "Google Chrome" --args --kiosk "${url}"`);
+        exec(`open -a "Google Chrome" --args --kiosk "${url}"`);
     }
 
     killChrome() {
-        try {
-            execSync('killall "Google Chrome"');
-        } catch (e) {
-            // no Google Chrome processes to kill, do nothing
-        }
+        exec('killall "Google Chrome"');
     }
 }
