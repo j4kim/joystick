@@ -3,7 +3,7 @@ const options = [
         handler: "DomAtHomeHandler",
         title: "Dom At Home",
         args: {
-            path: "$HOME/dom-at-home/dist",
+            path: process.env.HOME + "/dom-at-home/dist",
             port: 3000,
         },
     },
@@ -340,7 +340,7 @@ const options = [
 ];
 
 const retroarch = {
-    coresPath: "$HOME/Library/Application Support/RetroArch/cores",
+    coresPath: process.env.HOME + "/Library/Application Support/RetroArch/cores",
     romsPath: "/Volumes/J4",
 };
 
