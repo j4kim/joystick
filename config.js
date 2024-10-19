@@ -14,14 +14,6 @@ const options = [
         args: [
             {
                 handler: "RetroArchHandler",
-                title: "Crash Bandicoot",
-                args: {
-                    core: "mednafen_psx_libretro.dylib",
-                    rom: "PS1/Crash Bandicoot/Crash Bandicoot [NTSC-U] [SCUS-94900].cue",
-                },
-            },
-            {
-                handler: "RetroArchHandler",
                 title: "Destruction Derby",
                 args: {
                     core: "mednafen_psx_libretro.dylib",
