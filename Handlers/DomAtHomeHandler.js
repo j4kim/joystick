@@ -1,34 +1,30 @@
 const Joystick = require("../joystick");
 const VolumeHandler = require("./VolumeHandler");
-const { execSync } = require("child_process");
-const handler = require("serve-handler");
-const http = require("http");
+const { exec, execSync } = require("child_process");
 
-class DomAtHomeHandler extends VolumeHandler {
+module.exports = class DomAtHomeHandler extends VolumeHandler {
     constructor({ path, port }) {
         super();
         this.joystick = new Joystick();
-        this.server = this.serve(path, port);
+        this.serveProcess = this.serve(path, port);
         this.openChrome("http://localhost:" + port);
     }
 
     switch() {
-        this.server.close();
+        this.serveProcess.kill();
         this.joystick.disconnect();
         this.killChrome();
         return super.switch();
     }
 
     serve(path, port) {
-        const server = http.createServer((request, response) =>
-            handler(request, response, { public: path })
-        );
-        server.listen(port);
-        return server;
+        return exec(`npx serve ${path} -l ${port}`);
     }
+
     openChrome(url) {
         execSync(`open -a "Google Chrome" --args --kiosk "${url}"`);
     }
+
     killChrome() {
         try {
             execSync('killall "Google Chrome"');
@@ -37,5 +33,3 @@ class DomAtHomeHandler extends VolumeHandler {
         }
     }
 }
-
-module.exports = DomAtHomeHandler;
