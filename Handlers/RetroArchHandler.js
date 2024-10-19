@@ -1,6 +1,7 @@
 const VolumeHandler = require("./VolumeHandler");
 const { execSync } = require("child_process");
 const { retroarch } = require("../config");
+const { checkPath } = require("../tools");
 
 class RetroArchHandler extends VolumeHandler {
     constructor({ core, rom }) {
@@ -16,8 +17,14 @@ class RetroArchHandler extends VolumeHandler {
     }
 
     openRetroArch() {
-        const rom = this.rom ? `"${retroarch.romsPath}/${this.rom}"` : "";
-        const cmd = `open -a "RetroArch" --args -L "${retroarch.coresPath}/${this.core}" ${rom} -f`;
+        var rom = "";
+        if (this.rom) {
+            rom = retroarch.romsPath + "/" + this.rom;
+            if (!checkPath(rom)) return;
+        }
+        const core = retroarch.coresPath + "/" + this.core;
+        if (!checkPath(core)) return;
+        const cmd = `open -a "RetroArch" --args -L "${core}" "${rom}" -f`;
         console.log(cmd);
         execSync(cmd);
     }
