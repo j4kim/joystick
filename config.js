@@ -1,11 +1,9 @@
-const usrBase = "/Users/joaquimperez";
-
 const options = [
     {
         handler: "DomAtHomeHandler",
         title: "Dom At Home",
         args: {
-            path: usrBase + "/dev/dom-at-home/dist",
+            path: "$HOME/dom-at-home/dist",
             port: 3000,
         },
     },
@@ -350,7 +348,7 @@ const options = [
 ];
 
 const retroarch = {
-    coresPath: usrBase + "/Library/Application Support/RetroArch/cores",
+    coresPath: "$HOME/Library/Application Support/RetroArch/cores",
     romsPath: "/Volumes/J4",
 };
 
